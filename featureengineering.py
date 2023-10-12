@@ -33,7 +33,6 @@ def dataEngineering():
     oversample = SMOTE()
     X, y = oversample.fit_resample(X, y)
     # summarize distribution
-    counter = Counter(y)
     df = pd.concat([X,y], axis=1)
     df.to_csv("data_mod.csv", index = False)
     #print(X.columns())
