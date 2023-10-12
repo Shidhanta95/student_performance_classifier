@@ -25,7 +25,7 @@ def dataPrepocessing():
     #cols = [df.columns[0],'school','sex','age','address','famsize','Medu','Pstatus','guardian','schoolsup','famsup','paid','activities','nursery','romantic','famrel','freetime','goout','Dalc','Walc','health']
     #df.drop(cols,inplace=True, axis=1)
     
-    data.drop(['Unnamed: 0', 'school', 'Mjob', 'Fjob', 'reason', 'guardian', 'nursery', 'romantic', 'famrel', 'Dalc', 'Walc', 'G1', 'G2', 'G3'], axis=1, inplace=True)
+    data.drop(['Unnamed: 0', 'school', 'Mjob', 'Fjob', 'reason', 'guardian', 'nursery', 'romantic', 'famrel', 'Dalc', 'Walc', 'G1', 'G2', 'G3','score'], axis=1, inplace=True)
     print("Duplicate Rows: ",data.duplicated().sum())
 
     #Exploring the Categorical Features
