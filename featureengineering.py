@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder,MinMaxScaler
 from datapreprocessing import dataPrepocessing
 import numpy as np
-
+from imblearn.over_sampling import SMOTE
 
 def dataEngineering():
     
@@ -27,9 +27,18 @@ def dataEngineering():
     
     for column in categorical_features:
         data[column] = lab.fit_transform(data[column])
-    data.to_csv("data_mod.csv", index = False)
+    y = data['grade']
+    y = pd.DataFrame(y)
+    X = data.drop(['grade'],axis = 1)
+    oversample = SMOTE()
+    X, y = oversample.fit_resample(X, y)
+    # summarize distribution
+    counter = Counter(y)
+    df = pd.concat([X,y], axis=1)
+    df.to_csv("data_mod.csv", index = False)
     #print(X.columns())
-    return data
+    return df
+   
 
 
 dataEngineering()
